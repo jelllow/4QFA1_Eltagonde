@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up Sheet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="signup" onsubmit="return out()" onreset="reset()">
+        <fieldset>
+            <legend style="font-size: 30px;">Sign-Up Sheet</legend>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="Name" placeholder="Name" required onblur="checkInputR(this)" onfocus="checkInputG(this)">
+            <br><br>
+
+            <label for="userName">Username:</label><br>
+            <input type="text" id="userName" name="Username" placeholder="Username" required onblur="checkInputR(this)" onfocus="checkInputG(this)">
+            <br><br>
+
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="Password" placeholder="Password"  required onblur="checkInputR(this)" onfocus="checkInputG(this)">
+            <br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="Email" placeholder="Email" required onblur="checkInputR(this)" onfocus="checkInputG(this)">
+            <br><br>
+
+            <label for="address">Address:</label><br>
+            <textarea name="Address" id="address" cols="30" rows="2" required onblur="checkInputR(this)" onfocus="checkInputG(this)"></textarea>
+            <br><br>
+
+            <label for="gender">Gender:</label>
+            <select name="Gender" id="gender" required onblur="checkInputR(this)" onfocus="checkInputG(this)">
+                <option value="Select" selected disabled hidden>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Prefer not to Mention">Prefer not to mention</option>
+            </select>
+            <br><br>
+
+            <label for="interests">Interests:</label><br>
+            <textarea name="Interests" id="interests" cols="30" rows="5" required onblur="checkInputR(this)" onfocus="checkInputG(this)"></textarea>
+            <br><br>
+
+            <button id="sub" type="submit" value="Submit" onclick="out()">Submit</button>
+            <button id="res" type="reset" value="Reset" onclick="reset()">Reset</button>
+        </fieldset><br>
+        <fieldset>
+                <legend style="font-size: 30px;">Information: </legend>
+                <p id="output"></p>
+        </fieldset>
+    </form>
+    
+    <script>
+        function checkInputR(input) {
+            if(input.value == "") {
+                input.style.border ="2px solid red";
+            } 
+        }
+        
+        function checkInputG(input) {
+            input.style.border ="2px solid green";
+        }
+
+        function out() {
+            name=document.getElementById("name").value;
+            userName=document.getElementById("userName").value;
+            password=document.getElementById("password").value;
+            email=document.getElementById("email").value;
+            address=document.getElementById("address").value;
+            interests=document.getElementById("interests").value;
+            gender=document.getElementById("gender").value;
+
+            document.getElementById("output").innerHTML="Name: " + name + "<br>Username: " + userName + "<br>Password: " 
+            + password + "<br>Email: " + email + "<br>Address: " + address +  "<br>Gender: "+ gender + "<br>Interests: " 
+            + interests;
+            
+            return false;
+        }
+
+        function reset() {
+            var output = document.getElementById("output").innerHTML = "";
+        }
+    </script>
+</body>
+</html>
